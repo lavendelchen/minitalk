@@ -5,69 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/02 03:19:12 by shaas             #+#    #+#              #
-#    Updated: 2022/02/09 02:17:40 by shaas            ###   ########.fr        #
+#    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
+#    Updated: 2021/07/14 20:28:01 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# defines #
-NAME := minitalk
+NAME = libft.a
 
-CLIENT := client
-SERVER := server
+COMP = gcc -Wall -Wextra -Werror -c
 
-CLIENT_SRC := client.c
-SERVER_SRC := server.c
+C_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
+ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
+ft_strchr.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
+ft_tolower.c ft_toupper.c ft_calloc.c ft_strdup.c ft_strjoin.c ft_substr.c ft_strtrim.c \
+ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
+ft_strmapi.c ft_split.c ft_striteri.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-CLIENT_OBJ := $(CLIENT_SRC:.c=.o)
-SERVER_OBJ := $(SERVER_SRC:.c=.o)
-
-LIBFT_DIR := libft
-
-LIBFT = $(LIBFT_DIR)/libft.a
-
-COMP := gcc -Wall -Wextra -Werror
-
-INCLUDE := -I includes
-
-# check if mac or linux #
-OS := $(shell uname)
+O_FILES = $(C_FILES:.c=.o)
 
 # rules #
 all: $(NAME)
 
-$(NAME): $(CLIENT) $(SERVER)
-
-$(CLIENT): $(LIBFT) $(CLIENT_OBJ)
-	$(COMP) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT)
-	@printf $(CYAN)"*--------client compiled!--------------*\n"$(RESET)
-
-$(SERVER): $(LIBFT) $(SERVER_OBJ)
-	$(COMP) $(SERVER_OBJ) $(LIBFT) -o $(SERVER)
-	@printf $(MAGENTA)"*--------server compiled!--------------*\n"$(RESET)
-
 %.o: %.c
-	$(COMP) $(INCLUDE) $< -o $@
+	@$(COMP) $< -o $@
 
-# rule for running program
-exec: print_system
-	@printf $(MAGENTA)"*--------executing program!------------*\n\n"$(RESET)
-	./$(NAME) $(MAP)
+$(NAME): $(O_FILES)
+	@printf $(LIGHTBLUE)"*--------libtft compiled!--------------*\n\n"$(RESET)
+	@ar rc $(NAME) $(O_FILES)
+	@printf $(LIGHTBLUE)"*--------library created!--------------*\n\n"$(RESET)
 
-# complies & runs immediately
-both: $(NAME) exec
-
-$(LIBFT):
-	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
-	@make -C $(LIBFT_DIR)
-
-clean: print_system
-	rm -fr $(OBJ)
-	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
+clean:
+	@rm -f $(O_FILES)
+	@printf $(LIGHTBLUE)"*--------libft object files removed!---*\n\n"$(RESET)
 
 fclean: clean
-	rm -fr $(NAME)
-	@printf $(RED)"*--------$(NAME) removed!--------------*\n\n"$(RESET)
+	@rm -f $(NAME)
+	@printf $(LIGHTBLUE)"*--------$(NAME) removed!--------------*\n\n"$(RESET)
 
 re: fclean all
 

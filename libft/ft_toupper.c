@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/06/22 20:09:25 by shaas             #+#    #+#             */
+/*   Updated: 2021/06/25 15:27:45 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_toupper(int c)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	if (97 <= c && c <= 122)
+		c = c - 32;
+	return (c);
 }

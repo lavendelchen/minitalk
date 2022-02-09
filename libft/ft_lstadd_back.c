@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/07/12 20:14:53 by shaas             #+#    #+#             */
+/*   Updated: 2021/07/19 19:50:37 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	t_list	*last;
+
+	if (new != NULL)
+	{
+		last = ft_lstlast(*lst);
+		if (last == NULL)
+			ft_lstadd_front(lst, new);
+		else
+			last->next = new;
+	}
 }

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/06/17 15:10:18 by shaas             #+#    #+#             */
+/*   Updated: 2021/06/28 13:00:44 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	size_t		i;
+	char		*char_dst;
+	const char	*char_src;
+
+	if (!dst && !src)
+		return (NULL);
+	char_dst = (char *)dst;
+	char_src = (const char *)src;
+	i = 0;
+	while (i < n)
+	{
+		*char_dst = *char_src;
+		char_dst++;
+		char_src++;
+		i++;
+	}
+	return (dst);
 }

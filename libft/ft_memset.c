@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/06/16 11:14:11 by shaas             #+#    #+#             */
+/*   Updated: 2021/06/25 15:26:59 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	size_t			i;
+	unsigned char	*char_b;
+	unsigned char	*start_b;
+
+	start_b = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+	{
+		char_b = (unsigned char *)b;
+		*char_b = (unsigned char)c;
+		b++;
+		i++;
+	}
+	b = start_b;
+	return (b);
 }

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/07/05 14:37:33 by shaas             #+#    #+#             */
+/*   Updated: 2021/07/08 12:52:53 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)malloc(ft_strlen(s) + 1);
+	if (str == NULL)
+		return (str);
+	while (s[i] != '\0')
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

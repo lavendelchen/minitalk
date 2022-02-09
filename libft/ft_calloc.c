@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/06/28 17:59:10 by shaas             #+#    #+#             */
+/*   Updated: 2021/06/28 18:56:07 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
-	return (0);
+	char	*ptr;
+	size_t	ptr_size;
+	size_t	i;
+
+	ptr_size = size * count;
+	i = 0;
+	ptr = (char *)malloc(ptr_size);
+	if (ptr == NULL)
+		return (ptr);
+	while (i < ptr_size)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
 }

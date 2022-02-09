@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 02:05:30 by shaas            ###   ########.fr       */
+/*   Created: 2021/06/23 12:45:35 by shaas             #+#    #+#             */
+/*   Updated: 2021/06/25 15:27:26 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	kill(0, SIGUSR2);
-	ft_itoa(argc);
-	ft_memcmp(argv[0], argv[1], 3);
+	size_t				i;
+	const unsigned char	*un_s1;
+	const unsigned char	*un_s2;
+
+	un_s1 = (const unsigned char *)s1;
+	un_s2 = (const unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (*un_s1 != *un_s2)
+			return (*un_s1 - *un_s2);
+		if (*un_s1 == '\0' && *un_s2 == '\0')
+			return (0);
+		un_s1++;
+		un_s2++;
+		i++;
+	}
 	return (0);
 }
