@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/02 03:19:12 by shaas             #+#    #+#              #
-#    Updated: 2022/02/09 02:17:40 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/09 11:43:27 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 COMP := gcc -Wall -Wextra -Werror
 
-INCLUDE := -I includes
+INCLUDE := $(LIBFT_DIR)/libft.h
 
 # check if mac or linux #
 OS := $(shell uname)
@@ -47,12 +47,14 @@ $(SERVER): $(LIBFT) $(SERVER_OBJ)
 	@printf $(MAGENTA)"*--------server compiled!--------------*\n"$(RESET)
 
 %.o: %.c
-	$(COMP) $(INCLUDE) $< -o $@
+	$(COMP) -o $@ -c $<
 
 # rule for running program
-exec: print_system
-	@printf $(MAGENTA)"*--------executing program!------------*\n\n"$(RESET)
-	./$(NAME) $(MAP)
+exec:
+	@printf $(MAGENTA)"*--------executing program!------------*\n"$(RESET)
+	./$(SERVER)
+	@printf "\n"
+	./$(CLIENT)
 
 # complies & runs immediately
 both: $(NAME) exec
