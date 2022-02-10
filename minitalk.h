@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:41:31 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 01:41:37 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/10 14:12:00 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,11 @@
 
 # include <signal.h>
 # include "libft/libft.h"
+
+typedef struct s_char
+{
+	int	c;
+	int	i;
+}				t_char;
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:20:56 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 12:35:08 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/10 13:48:03 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	error_check(int argc, char **argv)
+static void	error_check(int argc, char **argv)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ void	error_check(int argc, char **argv)
 	}
 }
 
-void	send_char(int c, pid_t pid)
+static void	send_char(int c, pid_t pid)
 {
 	int	i;
 

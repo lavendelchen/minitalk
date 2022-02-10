@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/02 03:19:12 by shaas             #+#    #+#              #
-#    Updated: 2022/02/09 11:43:27 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/10 14:11:27 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,27 +49,23 @@ $(SERVER): $(LIBFT) $(SERVER_OBJ)
 %.o: %.c
 	$(COMP) -o $@ -c $<
 
-# rule for running program
-exec:
-	@printf $(MAGENTA)"*--------executing program!------------*\n"$(RESET)
+# rule for running server
+servexe:
+	@printf $(MAGENTA)"*--------executing server!------------*\n"$(RESET)
 	./$(SERVER)
 	@printf "\n"
-	./$(CLIENT)
-
-# complies & runs immediately
-both: $(NAME) exec
 
 $(LIBFT):
 	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
 	@make -C $(LIBFT_DIR)
 
-clean: print_system
+clean:
 	rm -fr $(OBJ)
 	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
 
 fclean: clean
-	rm -fr $(NAME)
-	@printf $(RED)"*--------$(NAME) removed!--------------*\n\n"$(RESET)
+	rm -fr $(CLIENT) $(SERVER)
+	@printf $(RED)"*--------executabkees removed!---------*\n\n"$(RESET)
 
 re: fclean all
 
