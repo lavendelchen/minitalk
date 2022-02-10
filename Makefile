@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/02 03:19:12 by shaas             #+#    #+#              #
-#    Updated: 2022/02/10 14:11:27 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/10 20:02:41 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,6 @@ COMP := gcc -Wall -Wextra -Werror
 
 INCLUDE := $(LIBFT_DIR)/libft.h
 
-# check if mac or linux #
-OS := $(shell uname)
-
 # rules #
 all: $(NAME)
 
@@ -55,6 +52,9 @@ servexe:
 	./$(SERVER)
 	@printf "\n"
 
+# compiles and runs server
+both: $(NAME) servexe
+
 $(LIBFT):
 	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
 	@make -C $(LIBFT_DIR)
@@ -65,7 +65,7 @@ clean:
 
 fclean: clean
 	rm -fr $(CLIENT) $(SERVER)
-	@printf $(RED)"*--------executabkees removed!---------*\n\n"$(RESET)
+	@printf $(RED)"*--------executables removed!---------*\n\n"$(RESET)
 
 re: fclean all
 
