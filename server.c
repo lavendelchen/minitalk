@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:21:01 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/10 20:00:41 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/11 18:59:52 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_char	g_c;
 
-void	receive(int sig)
+static void	receive(int sig)
 {
 	if (sig == SIGUSR2)
 		g_c.c = g_c.c + (1 << g_c.i);
