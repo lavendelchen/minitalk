@@ -60,7 +60,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 clean:
-	rm -fr $(OBJ)
+	rm -fr $(CLIENT_OBJ) $(SERVER_OBJ)
 	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
 
 fclean: clean
